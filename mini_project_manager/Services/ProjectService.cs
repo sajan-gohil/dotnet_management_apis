@@ -51,4 +51,39 @@ public class ProjectService : IProjectService
         _db.Projects.Remove(p);
         await _db.SaveChangesAsync();
     }
+
+    public async Task<ScheduleResponseDto> ScheduleProjectAsync(int userId, int projectId, ScheduleRequestDto request)
+    {
+        // Validate project ownership
+        var project = await _db.Projects.SingleOrDefaultAsync(x => x.Id == projectId && x.UserId == userId);
+        if (project == null) throw new KeyNotFoundException("Project not found");
+
+        // Topological sort by dependencies, then by due date
+        var tasks = request.Tasks;
+        var titleToTask = tasks.ToDictionary(t => t.Title);
+        var visited = new HashSet<string>();
+        var result = new List<string>();
+
+        void Visit(string title)
+        {
+            if (visited.Contains(title)) return;
+            visited.Add(title);
+            foreach (var dep in titleToTask[title].Dependencies)
+            {
+                if (titleToTask.ContainsKey(dep))
+                    Visit(dep);
+            }
+            result.Add(title);
+        }
+
+        // Visit all tasks
+        foreach (var t in tasks.OrderBy(t => t.DueDate))
+        {
+            Visit(t.Title);
+        }
+
+        // Remove duplicates while preserving order
+        var recommendedOrder = result.Distinct().ToList();
+        return new ScheduleResponseDto { RecommendedOrder = recommendedOrder };
+    }
 }

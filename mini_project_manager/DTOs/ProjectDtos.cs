@@ -36,3 +36,21 @@ public class TaskDto
     public DateTime? DueDate { get; set; }
     public bool IsCompleted { get; set; }
 }
+
+public class ScheduleTaskInputDto
+{
+    public string Title { get; set; } = null!;
+    public int EstimatedHours { get; set; }
+    public DateTime DueDate { get; set; }
+    public List<string> Dependencies { get; set; } = new();
+}
+
+public class ScheduleRequestDto
+{
+    public List<ScheduleTaskInputDto> Tasks { get; set; } = new();
+}
+
+public class ScheduleResponseDto
+{
+    public List<string> RecommendedOrder { get; set; } = new();
+}

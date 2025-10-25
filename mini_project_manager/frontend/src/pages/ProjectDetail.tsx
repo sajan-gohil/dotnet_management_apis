@@ -2,11 +2,26 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import API from '../api'
 
+type ScheduleTaskInput = {
+  title: string;
+  estimatedHours: number;
+  dueDate: string;
+  dependencies: string[];
+};
+
+type ScheduleResponse = {
+  recommendedOrder: string[];
+};
+
 export default function ProjectDetail() {
   const { id } = useParams()
   const [project, setProject] = useState<any>(null)
   const [taskTitle, setTaskTitle] = useState('')
   const [taskDueDate, setTaskDueDate] = useState<string | null>(null)
+
+  const [schedule, setSchedule] = useState<ScheduleResponse | null>(null)
+  const [loadingSchedule, setLoadingSchedule] = useState(false)
+  const [scheduleError, setScheduleError] = useState<string | null>(null)
 
   async function load() {
     const r = await API.get(`/api/projects/${id}`)
@@ -38,6 +53,35 @@ export default function ProjectDetail() {
     <div>
       <h2>{project.title}</h2>
       <p>{project.description}</p>
+      <hr />
+      <h3>Schedule</h3>
+      <button className="btn btn-outline-success mb-2" onClick={async () => {
+        setLoadingSchedule(true)
+        setScheduleError(null)
+        try {
+          // Prepare input for scheduler
+          const tasks: ScheduleTaskInput[] = project.tasks.map((t: any) => ({
+            title: t.title,
+            estimatedHours: 1, // Placeholder, you may want to allow editing
+            dueDate: t.dueDate || new Date().toISOString().slice(0, 10),
+            dependencies: [] // Placeholder, you may want to allow editing
+          }))
+          const res = await API.post(`/api/projects/${id}/schedule`, { tasks })
+          setSchedule(res.data)
+        } catch (e: any) {
+          setScheduleError(e?.response?.data?.message || 'Failed to fetch schedule')
+        }
+        setLoadingSchedule(false)
+      }}>Get Recommended Schedule</button>
+      {loadingSchedule && <div>Loading schedule...</div>}
+      {scheduleError && <div className="text-danger">{scheduleError}</div>}
+      {schedule && (
+        <ul className="list-group mb-3">
+          {schedule.recommendedOrder.map((title, i) => (
+            <li key={i} className="list-group-item">{title}</li>
+          ))}
+        </ul>
+      )}
       <h3>Tasks</h3>
       <div className="mb-3">
         <input

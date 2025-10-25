@@ -61,4 +61,18 @@ public class ProjectsController : ControllerBase
             return NotFound();
         }
     }
+
+    [HttpPost("{projectId}/schedule")]
+    public async Task<IActionResult> Schedule(int projectId, [FromBody] ScheduleRequestDto request)
+    {
+        try
+        {
+            var res = await _projects.ScheduleProjectAsync(UserId, projectId, request);
+            return Ok(res);
+        }
+        catch (KeyNotFoundException)
+        {
+            return NotFound();
+        }
+    }
 }

@@ -8,4 +8,6 @@ public interface IProjectService
     Task<ProjectDto> CreateProjectAsync(int userId, CreateProjectDto dto);
     Task<ProjectDto> GetProjectAsync(int userId, int projectId);
     Task DeleteProjectAsync(int userId, int projectId);
+
+    Task<ScheduleResponseDto> ScheduleProjectAsync(int userId, int projectId, ScheduleRequestDto request);
 }
