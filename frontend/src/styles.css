@@ -1,0 +1,13 @@
+body { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; padding: 2rem; background: #f7f7f8; }
+.container { max-width: 720px; margin: 0 auto; background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 6px 20px rgba(0,0,0,0.06); }
+.add-form { display:flex; gap:8px; margin-bottom: 1rem }
+.add-form input { flex:1; padding:8px 10px; border:1px solid #ddd; border-radius:4px }
+.add-form button { padding:8px 12px }
+.task-list { list-style:none; padding:0; margin:0 }
+.task-list li { display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f0f0f0 }
+.task-list li.completed .desc { text-decoration:line-through; color:#888 }
+.delete { background:#ff6b6b; border:none; color:white; padding:6px 10px; border-radius:4px }
+
+.filters { margin-bottom: 12px; display:flex; gap:8px }
+.filters button { padding:6px 10px; border-radius:6px; border:1px solid #ddd; background:#fff }
+.filters button.active { background:#007bff; color:#fff; border-color:#007bff }
