@@ -8,25 +8,25 @@
 ## Get latest from https://github.com/github/gitignore/blob/main/Dotnet.gitignore
 
 # Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
+*/[Dd]ebug/
+*/[Dd]ebugPublic/
+*/[Rr]elease/
+*/[Rr]eleases/
+*/x64/
+*/x86/
 [Ww][Ii][Nn]32/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
-bld/
+bl[Oo]b/
 [Bb]in/
-[Oo]bj/
+*/[Oo]bj/
 [Ll]og/
 [Ll]ogs/
 
 # .NET Core
 project.lock.json
 project.fragment.lock.json
-artifacts/
+*/artifacts/
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
@@ -55,23 +55,29 @@ nunit-*.xml
 
 # Frontend / Node
 # Ignore node modules and build outputs in the frontend folder
-frontend/node_modules/
-frontend/dist/
-frontend/.vite/
-frontend/build/
-frontend/.turbo/
+*/frontend/node_modules/
+*/frontend/dist/
+*/frontend/.vite/
+*/frontend/build/
+*/frontend/.turbo/
 
 # Lockfiles
-frontend/package-lock.json
-frontend/yarn.lock
-frontend/pnpm-lock.yaml
+*/frontend/package-lock.json
+*/frontend/yarn.lock
+*/frontend/pnpm-lock.yaml
 
 # Env files
-frontend/.env
-frontend/.env.*
+*/frontend/.env
+*/frontend/.env.*
 
 # local dev and logs
-frontend/.DS_Store
-frontend/.idea/
-frontend/.vscode/
-frontend/*.log
+*/frontend/.DS_Store
+*/frontend/.idea/
+*/frontend/.vscode/
+*/frontend/*.log
+
+*/node_modules/
+dist/
+.vite/
+build/
+.turbo/

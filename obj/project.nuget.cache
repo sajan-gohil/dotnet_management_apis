@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "dgSpecHash": "RB1qn6REtE+xLJtmhsoc8nA0nx+flk8jZeqAoUlXlZWxWGArZRlWTJRjAcKSZO5/gX0yHsTZK5Dxe66IHOW7Dg==",
+  "success": true,
+  "projectFilePath": "/home/srg/projects/dotnet_management_apis/dotnet-management-apis.csproj",
+  "expectedPackageFiles": [
+    "/home/srg/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/home/srg/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
+    "/home/srg/.nuget/packages/swashbuckle.aspnetcore/6.6.1/swashbuckle.aspnetcore.6.6.1.nupkg.sha512",
+    "/home/srg/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.1/swashbuckle.aspnetcore.swagger.6.6.1.nupkg.sha512",
+    "/home/srg/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.6.1/swashbuckle.aspnetcore.swaggergen.6.6.1.nupkg.sha512",
+    "/home/srg/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.6.1/swashbuckle.aspnetcore.swaggerui.6.6.1.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1603",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "dotnet-management-apis depends on Swashbuckle.AspNetCore (>= 6.6.0) but Swashbuckle.AspNetCore 6.6.0 was not found. An approximate best match of Swashbuckle.AspNetCore 6.6.1 was resolved.",
+      "libraryId": "Swashbuckle.AspNetCore",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}
