@@ -1,7 +1,7 @@
 # Dotnet Management APIs & Mini Project Manager
 
 ## Overview
-This repository contains two full-stack applications developed as part of home assignments:
+This repository contains two full-stack applications developed as part of home assignments (made with co-pilot assistance):
 
 1. **Basic Task Manager**
 2. **Mini Project Manager**
